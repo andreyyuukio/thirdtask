@@ -28,7 +28,7 @@ function fibonatiArr(last_item: number): number[]{
     };
     return myArray;
 };
-    // 1.2 - рекурсивнуя функция получения н-ного члена ряда чисел фибоначи
+   
 
 function fibonatiRecurss(n: number): number {
     return (n <= 1) ?  n : 
@@ -37,7 +37,7 @@ function fibonatiRecurss(n: number): number {
 fibonatiRecurs(12);
       
       
-//  1.3 Мемоизированная функция для нахождения н-ного члена ряда Фибоначи
+
 function fibonatiRecurs(n: number): number {
     let resultFibonati;
     return resultFibonati =  (n <= 1) ?  n : 
@@ -61,8 +61,6 @@ function fibonatiRecurs(n: number): number {
 console.log(fibonatiRecurs(44));
 
 
-
-//Задача 2 Реализовать вычисление, периметра/площади, для треугольника, прямоугольника и круга. Реализовать с помощью функций и с помощью классов.
 function triangleArea(firstSide: number, secondSide: number, thirdSide: number){
     let halfPerimetr = (firstSide + secondSide + thirdSide)/2; 
     let triangleS =  Math.sqrt(halfPerimetr*(halfPerimetr - firstSide)*(halfPerimetr - secondSide)*(halfPerimetr - thirdSide));
@@ -83,7 +81,7 @@ let squarePerimetr = (width: number, height: number): number => width*2 + height
 console.log(squareArea(10, 15));
     
     
-/*Функции вычисления площади и периметра круга*/
+
 let circleArea = (radius: number) =>  (Math.pow(radius, 2) * Math.PI).toFixed(4);
 console.log(circleArea(10));
 
@@ -91,7 +89,7 @@ let circlePerimetr = (radius: number) => (Math.PI * 2 * radius).toFixed(4);
 console.log(circlePerimetr(10));
 
 
-/*  Вычисдения площади и периметра треугольника  с помощью классов  */
+
 class triangleBase{
     firstSide :number;
     secondSide: number;
@@ -115,7 +113,7 @@ class triangleBase{
 let triangle = new triangleBase(11, 5, 7);
 console.log("Периметр треугольника: " + triangle.perimetr + " " + "Площадь треугольника: " + " / " + triangle.area)
 
-  /*  Вычисдения площади и периметра прямоугольника с помощью классов  */
+
   class Square {
     height: number;
     width: number;
@@ -132,7 +130,6 @@ console.log("Периметр треугольника: " + triangle.perimetr + 
 let square = new Square(10, 10);
 console.log("Периметр прямоугольника: " + square.perimetr + " / " + "Площадь прямоугольника: " + square.area);
 
-    /*  Вычисдения площади и периметра круга с помощью классов  */
 class circleBase{
     radius: number;
     constructor(radius: number){
@@ -149,7 +146,7 @@ let circle = new circleBase(11);
 console.log("Периметр круга: " + circle.perimetr + " " + "Площадь круга: " + circle.area);
 
 
-// 3 
+
 
 function getMaxItem(array: number[]): number{
     let maxNum = array[0];
@@ -214,7 +211,7 @@ function findMaxNum(array: number[]): number{
 console.log(findMaxNum([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
       
       
-/* рукурсивная функция для поиска минимального числа */
+
 function findMinNum(array: number[]): number{
     let minNum = Infinity;
     for(let i = 0; i < array.length; i++){
@@ -225,7 +222,7 @@ function findMinNum(array: number[]): number{
 console.log(findMinNum([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
       
       
-/* рукурсивная функция для поиска положительных чисел */
+
 function findPositiveNum(array: number[]): number{
 for(let i = 0; i<array.length; i++){
     if(array[i] <= 0){
@@ -238,7 +235,7 @@ for(let i = 0; i<array.length; i++){
 console.log(findPositiveNum([1, 2, 3, 10, 0, 11, 0, -15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
       
       
-/* рукурсивная функция для поиска отрицательных чисел */
+
 function findNegativeNum(array: number[]): number{
 for(let i = 0; i < array.length; i++){
     if(array[i] >= 0){
@@ -275,7 +272,7 @@ function recursiveArrayCount(arr: number[], count: number): number {
 let myArray = [1, 10, 23, 11, 4, 48, 88];
 console.log(recursiveArrayCount(myArray, 1));
 
-// 5
+
 function factorial(number: number): number{
     let result = (number != 1) ? 
     number * factorial(number - 1) : number;
@@ -313,8 +310,6 @@ let newArray = matrix.map((element, i) => element.map((element2: number, j: numb
 console.log(newArray);
 
 
-/*Сложение матриц*/
-
 function sumMatrix(firstMatrix: Array<any>, secondMatrix: Array<any>): Array<any>{   
     let sumOfMatrix: Array<any> = [];
     for (let i = 0; i < firstMatrix.length; i++){
@@ -335,7 +330,7 @@ let secondMatrix = [
 ];
 console.log(sumMatrix(firstMatrix, secondMatrix));
 
-//7
+
 let matrix: Array<any> = [
     [1, 2, 3, 4, 5],
     [5, 0, 4, 6, 3],
@@ -396,11 +391,11 @@ sername: "sername",
        
 function newBind(targetFn: any, context: any): any {
     return function(...args: Array<any>): string{
-        const dateString = Date.now().toString(); // уникальная строка
-        context[dateString] = targetFn; // помещаем в значение уникального поля нужную функцию
-        let result = context[dateString](); // вызов функции в значеии уникального поля
-        delete context[dateString]; // после отработи функции удаляем её из объекта
-        return result; // возращаем результат функции
+        const dateString = Date.now().toString(); 
+        context[dateString] = targetFn;
+        let result = context[dateString](); 
+        delete context[dateString]; 
+        return result;
     };
 };
 
@@ -425,7 +420,6 @@ function personName() {
 };
 myCall(personName, admin);
 
- /*forEach*/
  let number: number[] = [1, 2, 3, 4, 5];
  let newArray: number[] = [];
  function forEachh(array: number[]): number[]{
