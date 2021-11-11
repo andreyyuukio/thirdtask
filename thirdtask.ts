@@ -1,12 +1,10 @@
-
-//1.1
-function fibonatiArr(last_item: number): Array<number>{
-    let arr = [];
-    let fib_range: any = {
+function fibonatiArr(last_item: number): number[]{
+    let myArray = [];
+    let fibonatiRange: any = {
       from: 0,
       to: last_item,
     };    
-    fib_range[Symbol.iterator] = function() {
+    fibonatiRange[Symbol.iterator] = function() {
         return {
             range_item: this.from,
             last_item: this.to,
@@ -20,17 +18,16 @@ function fibonatiArr(last_item: number): Array<number>{
             }
         };
     };    
-    let a: number = 0;
-    let b: number = 1;
-    for (let num of fib_range) {
-        let c: number = a + b;
-        a = b;
-        b = c;
-        arr.push(a);    
+    let prevItem: number = 0;
+    let item: number = 1;
+    for (let num of fibonatiRange) {
+        let cnextItem: number = prevItem + item;
+        prevItem = item;
+        item = cnextItem;
+        myArray.push(prevItem);    
     };
-    return arr;
-    };
-
+    return myArray;
+};
     // 1.2 - рекурсивнуя функция получения н-ного члена ряда чисел фибоначи
 
 function fibonatiRecurss(n: number): number {
@@ -47,7 +44,7 @@ function fibonatiRecurs(n: number): number {
     fibonatiRecurs(n - 1) + fibonatiRecurs(n - 2);   
   };
   
-  function cacheFib(func: any) {
+  function cacheFibonati(func: any) {
     let cache = new Map();
     return function(resultFibonati: number) {
     if (cache.has(resultFibonati)) {  
@@ -60,7 +57,7 @@ function fibonatiRecurs(n: number): number {
     };
   };
   
-cacheFib(fibonatiRecurs);
+  cacheFibonati(fibonatiRecurs);
 console.log(fibonatiRecurs(44));
 
 
@@ -154,17 +151,17 @@ console.log("Периметр круга: " + circle.perimetr + " " + "Площ�
 
 // 3 
 
-function getMaxItem(array: Array<number>): number{
+function getMaxItem(array: number[]): number{
     let maxNum = array[0];
     for(let item of array){
     maxNum = (item > maxNum) ? item : maxNum;
 }
     return maxNum;
 }
-console.log(getMaxItem([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
+console.log(getMaxItem([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1, 6]))
     
     
-function getMinValue(array:Array<number>): number{
+function getMinValue(array:number[]): number{
     let minItem = array[0];
     for(let item of array ){
         minItem = (item < minItem ) ? item : minItem;
@@ -174,7 +171,7 @@ function getMinValue(array:Array<number>): number{
 console.log(getMinValue([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
 
 
-function getNullValue(array: Array<number>): number{
+function getNullValue(array: number[]): number{
     let arrayOfNull = [];
         for (let item of array){
         arrayOfNull.length = (item == 0) ? arrayOfNull.push(item) : arrayOfNull.length;
@@ -185,7 +182,7 @@ function getNullValue(array: Array<number>): number{
 
 
 
-function negativeNum(array: Array<number>){
+function negativeNum(array: number[]){
     let arrayOfNegative = [];
     for (let item of array){
         arrayOfNegative.length = (item <= 0) ? arrayOfNegative.push(item) : arrayOfNegative.length;
@@ -195,7 +192,7 @@ return arrayOfNegative.length;
 console.log(negativeNum([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
 
 
-function positiveNum(array: Array<number>): number{
+function positiveNum(array: number[]): number{
     let arrayOfPositive = [];
     for (let item of array){
         arrayOfPositive.length = (item >= 0) ? arrayOfPositive.push(item) : arrayOfPositive.length
@@ -205,7 +202,7 @@ return arrayOfPositive.length;
 console.log(positiveNum([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
 
 
-function findMaxNum(array: Array<number>): number{
+function findMaxNum(array: number[]): number{
     let maxNum = 0;   
     for(let i = 0; i < array.length; i++){      
         if ( array[i] > maxNum ){
@@ -218,7 +215,7 @@ console.log(findMaxNum([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1,
       
       
 /* рукурсивная функция для поиска минимального числа */
-function findMinNum(array: Array<number>): number{
+function findMinNum(array: number[]): number{
     let minNum = Infinity;
     for(let i = 0; i < array.length; i++){
         minNum = (array[i] < minNum) ? array[i] : minNum;
@@ -229,7 +226,7 @@ console.log(findMinNum([1, 2, 3, 10, 0, 11, 0, 15, 16, 0, -2, 41, 2, 31, 39, -1,
       
       
 /* рукурсивная функция для поиска положительных чисел */
-function findPositiveNum(array: Array<number>): number{
+function findPositiveNum(array: number[]): number{
 for(let i = 0; i<array.length; i++){
     if(array[i] <= 0){
         array.splice(i, 1);
@@ -242,7 +239,7 @@ console.log(findPositiveNum([1, 2, 3, 10, 0, 11, 0, -15, 16, 0, -2, 41, 2, 31, 3
       
       
 /* рукурсивная функция для поиска отрицательных чисел */
-function findNegativeNum(array: Array<number>): number{
+function findNegativeNum(array: number[]): number{
 for(let i = 0; i < array.length; i++){
     if(array[i] >= 0){
         array.splice(i, 1);
@@ -254,7 +251,7 @@ for(let i = 0; i < array.length; i++){
 };
 console.log(findNegativeNum([1, 2, 3, 10, 0, 11, 0, -15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
 
-function findNullNum(array: Array<number>): number{
+function findNullNum(array: number[]): number{
     for(let i = 0; i < array.length; i++){
         if(array[i] == 0){
             array.splice(i, 1);
@@ -267,7 +264,7 @@ function findNullNum(array: Array<number>): number{
 console.log(findNullNum([1, 2, 3, 10, 0, 11, 0, -15, 16, 0, -2, 41, 2, 31, 39, -1, 6]));
         
         
-function recursiveArrayCount(arr: Array<number>, count: number): number {
+function recursiveArrayCount(arr: number[], count: number): number {
     if (arr.length == 0) {
         return 0;
     } else {
@@ -345,8 +342,8 @@ let matrix: Array<any> = [
     [0, 1, 1, 0, 3],
     [1, 1, 2, 3, 4],
 ];
-function deleteString(matrix: Array<any>): Array<number>{ 
-    let indexOfNull: Array<number> = [];
+function deleteString(matrix: Array<any>): number[]{ 
+    let indexOfNull: number[] = [];
     for (let i: number = 0; i < matrix.length; i++){
         for(let j: number = 0; j < matrix[i].length; j++){
             if (matrix[i][j] == 0 && !indexOfNull.includes(j)){         
@@ -376,7 +373,7 @@ let matrix: Array<any> = [
     [0, 1, 1, 0, 3],
     [1, 1, 2, 3, 4],
     ];
-function deleteString(matrix: Array<any>): Array<number>{
+function deleteString(matrix: Array<any>): number[]{
     for (let i = 0; i < matrix.length; i++){
         if (matrix[i].includes(0)){
     matrix.splice(i, 1)
@@ -429,9 +426,9 @@ function personName() {
 myCall(personName, admin);
 
  /*forEach*/
- let number: Array<number> = [1, 2, 3, 4, 5];
- let newArray: Array<number> = [];
- function forEachh(array: Array<number>): Array<number>{
+ let number: number[] = [1, 2, 3, 4, 5];
+ let newArray: number[] = [];
+ function forEachh(array: number[]): number[]{
    for(let item of array){
        newArray.push(item*3.14)
    };
