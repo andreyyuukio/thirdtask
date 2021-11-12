@@ -1,3 +1,4 @@
+ 
 function fibonatiArr(last_item: number): number[]{
     let myArray = [];
     let fibonatiRange: any = {
@@ -30,18 +31,19 @@ function fibonatiArr(last_item: number): number[]{
 };
    
 
-function fibonatiRecurss(n: number): number {
-    return (n <= 1) ?  n : 
-    fibonatiRecurs(n - 1) + fibonatiRecurs(n - 2);
-}
-fibonatiRecurs(12);
-      
-      
 
-function fibonatiRecurs(n: number): number {
+function fibonatiRecurss(lastNumber: number): number {
+    return (lastNumber <= 1) ?  lastNumber : 
+    fibonatiRecurss(lastNumber - 1) + fibonatiRecurss(lastNumber - 2);
+}
+fibonatiRecurss(12);      
+
+
+
+function fibonatiRecurs(lastNumber: number): number {
     let resultFibonati;
-    return resultFibonati =  (n <= 1) ?  n : 
-    fibonatiRecurs(n - 1) + fibonatiRecurs(n - 2);   
+    return resultFibonati =  (lastNumber <= 1) ?  lastNumber : 
+    fibonatiRecurs(lastNumber - 1) + fibonatiRecurs(lastNumber - 2);   
   };
   
   function cacheFibonati(func: any) {
@@ -57,8 +59,10 @@ function fibonatiRecurs(n: number): number {
     };
   };
   
-  cacheFibonati(fibonatiRecurs);
+cacheFibonati(fibonatiRecurs);
 console.log(fibonatiRecurs(44));
+
+
 
 
 function triangleArea(firstSide: number, secondSide: number, thirdSide: number){
@@ -430,7 +434,4 @@ myCall(personName, admin);
  
  };
  console.log(forEachh(number));
-
-
-
 
